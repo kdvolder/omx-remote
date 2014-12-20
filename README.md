@@ -39,7 +39,7 @@ Edit the file `config.js` and set `mediaDir` to wherever it is that you keep the
 
 From the unzip directory (or clone location) enter:
 
-   npm install
+      npm install
    
 This should install some dependencies in a directory called 'node_modules'.
 
@@ -48,15 +48,15 @@ Starting the Server
 
 From the unzip directory (or clone) enter:
 
-   npm start
+     npm start
 
 After a little while you should see a message like this:
 
-   OMXRemote: listening on port 3000
+     OMXRemote: listening on port 3000
    
 This means the server has successfully started and is waiting for requests. It is now accessible on
 
-  http://<your-rpi-ip-address>:3000/
+     http://<your-rpi-ip-address>:3000/
   
 You can find out the precise ip addres by using the `ifconfig` command.
 

@@ -1,0 +1,114 @@
+body {
+    background-color: 00CED1;
+    font-size: 24pt;
+	font-family:arial;
+}
+
+.button {
+	margin: 10px;
+	border:5px solid #241d13;
+}
+
+.stop {
+	-moz-box-shadow:inset 0px 60px 0px -15px #b54b3a;
+	-webkit-box-shadow:inset 0px 60px 0px -15px #b54b3a;
+	box-shadow:inset 0px 60px 0px -15px #b54b3a;
+	background-color:#a73f2d;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-weight:bold;
+	padding:25px 25px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #7a2a1d;
+}
+.stop:hover {
+	background-color:#b34332;
+}
+.stop:active {
+	position:relative;
+	top:1px;
+}
+
+.playing {
+	margin: 10px;
+	border:5px solid #241d13;
+	padding:25px 25px;
+	background-color: white;
+}
+
+.playlink {
+	margin: 10px;
+	padding: 15px;
+}
+
+.pause {
+	-moz-box-shadow:inset 0px 60px 0px -15px #d5db28;
+	-webkit-box-shadow:inset 0px 60px 0px -15px #d5db28;
+	box-shadow:inset 0px 60px 0px -15px #d5db28;
+	background-color:#c7b814;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-weight:bold;
+	padding:25px 25px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #7a2a1d;
+}
+.pause:hover {
+	background-color:#d8de24;
+}
+.pause:active {
+	position:relative;
+	top:1px;
+}
+.playlink {
+	display: block;
+}
+
+.forward, .back {
+	-moz-box-shadow:inset 0px 60px 0px -15px #3dc21b;
+	-webkit-box-shadow:inset 0px 60px 0px -15px #3dc21b;
+	box-shadow:inset 0px 60px 0px -15px #3dc21b;
+	background-color:#429959;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-weight:bold;
+	padding:25px 25px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #2f6627;
+}
+.forward:hover {
+	background-color:#5cbf2a;
+}
+.forward:active {
+	position:relative;
+	top:1px;
+}
+
+.shutdown {
+	-moz-box-shadow:inset 0px 60px 0px -15px #b54b3a;
+	-webkit-box-shadow:inset 0px 60px 0px -15px #b54b3a;
+	box-shadow:inset 0px 34px 0px -15px #b54b3a;
+	background-color:#a73f2d;
+	border:1px solid #241d13;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-weight:bold;
+	padding:25px 25px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #7a2a1d;
+}
+.shutdown:hover {
+	background-color:#b34332;
+}
+.shutdown:active {
+	position:relative;
+	top:1px;
+}

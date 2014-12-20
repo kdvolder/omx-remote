@@ -2,6 +2,9 @@
   "name": "omx-remote",
   "description": "Simple remote controller web application for omxplayer on raspberry pi",
   "version": "0.0.1",
+  "scripts": {
+    "start": "node omx-remote.js"
+  },
   "dependencies": {
   	"express" : "4.0.0",
   	"xmlbuilder": "2.2.1",

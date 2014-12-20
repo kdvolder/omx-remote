@@ -6,10 +6,10 @@ omx-remote is a simple 'remote controller' web app for omxplayer on Raspberry Pi
 omx-remote lets you use a iPad, iPhone or any other device that has a basic web-browser to serve as a remote control
 for your Raspberry Pi playing video files from some directory to your TV.
 
-The remote controll app allows you to:
+The remote controll app allows you to use any web browser to:
 
  - see list a files in a specific directory in the browser
- - click a file to start playing it on your TV (assuming yout TV is connected to your RPi)
+ - click a file to start playing it on your TV (assuming your TV is connected to your RPi)
  - stop playing a file
  - pause/resume playing a file
  - skip forward/backward in the file.

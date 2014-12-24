@@ -13,6 +13,8 @@ var omxplayer = require('./omxplayer');
 // looks decent / easy to use for generating xml documents.
 
 var config = require('./config');
+var unlink = require('fs').unlink;
+var resolve = require('path').resolve;
 
 app.get('/', index);
 app.use('/css', express['static'](__dirname+'/css'));
@@ -22,6 +24,16 @@ app.get('/play', function (req, res) {
 	omxplayer.start(fileName, function() {
 		res.redirect('/');
 	});
+});
+
+app.get('/delete', function (req, res) {
+	var fileName = req.query.file;
+	unlink(
+		resolve(config.mediaDir, fileName), 
+		function () {
+			res.redirect('/');
+		}
+	);
 });
 
 app.get('/pause', function (req, res) {

@@ -64,8 +64,9 @@ body {
 	position:relative;
 	top:1px;
 }
-.playlink {
+.item {
 	display: block;
+	padding: 10px;
 }
 
 .forward, .back {

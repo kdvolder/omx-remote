@@ -33,12 +33,21 @@ function button(name, displayName) {
 	}};
 }
 
-function playLink(fileName) {
+function actionLink(fileName, action, text) {
+	text = text || fileName;
 	return { a: {
-		'@href': URI('play').addSearch({file: fileName}).toString(),
-		'@class': 'playlink',
-		'#text' : fileName
+		'@href': URI(action).addSearch({file: fileName}).toString(),
+		'@class': action+'link',
+		'#text' : text
 	}};
+}
+
+function playLink(fileName) {
+	return actionLink(fileName, 'play');
+}
+
+function deleteLink(fileName) {
+	return actionLink(fileName, 'delete', 'DELETE');
 }
 
 function displayCurrentFile(node) {
@@ -102,10 +111,16 @@ function index(req, res) {
 //			console.log('mediaFiles = '+mediaFiles);
 			mediaFiles.forEach(function(file) {
 //				console.log('file = '+file);
-				list.element(playLink(file));
+				list.element({div: {
+					'@class': 'item',
+					'#list': [ 
+						playLink(file),
+						deleteLink(file)
+					]
+				}});
 			});
 		}
-//		console.log(root.toString());
+		console.log(root.toString());
 		res.send(root.toString());
 	});
 	

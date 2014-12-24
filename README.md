@@ -26,7 +26,7 @@ Prerequisites
 Setup
 =====
 
-Download the (zip)[https://github.com/kdvolder/omx-remote/archive/master.zip] and unzip it somewhere. Or clone this
+Download the [zip](https://github.com/kdvolder/omx-remote/archive/master.zip) and unzip it somewhere. Or clone this
 repo. 
 
 ## Define the Media Dir

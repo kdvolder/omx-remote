@@ -69,7 +69,7 @@ body {
 	padding: 10px;
 }
 
-.forward, .back {
+.forward, .back, .fforward, .fback {
 	-moz-box-shadow:inset 0px 60px 0px -15px #3dc21b;
 	-webkit-box-shadow:inset 0px 60px 0px -15px #3dc21b;
 	box-shadow:inset 0px 60px 0px -15px #3dc21b;
@@ -83,10 +83,10 @@ body {
 	text-decoration:none;
 	text-shadow:0px -1px 0px #2f6627;
 }
-.forward:hover {
+.forward:hover, .back:hover, .fforward:hover, .fback:hover {
 	background-color:#5cbf2a;
 }
-.forward:active {
+.forward:active, .back:active, .fforward:active, .fback:active {
 	position:relative;
 	top:1px;
 }

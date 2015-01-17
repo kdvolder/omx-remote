@@ -61,8 +61,10 @@ function displayCurrentFile(node) {
 		node.element({'#list':  [
 			button('pause', 'PAUSE'),
 			button('stop', 'STOP'),
-			button('back', '<<'),
-			button('forward', '>>')
+		    button('fback', '<<'),
+			button('back', '<'),
+		    button('forward', '>'),
+			button('fforward', '>>')
 		]});
 	}
 }

@@ -97,5 +97,7 @@ exports.stop = stop;
 exports.pause = sendCodes(' ');
 exports.forward = sendCodes(new Buffer([0x5b, 0x43]));
 exports.back = sendCodes(new Buffer([0x5b, 0x44]));
+exports.bigBack = sendCodes(new Buffer([0x5b, 0x42]));
+exports.bigForward = sendCodes(new Buffer([0x5b, 0x41]));
 
 exports.isPlaying = isPlaying;

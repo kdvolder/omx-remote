@@ -54,6 +54,18 @@ app.get('/forward', function (req, res) {
 	});
 });
 
+app.get('/fforward', function (req, res) {
+	omxplayer.bigForward(function () {
+		res.redirect('/');
+	});
+});
+
+app.get('/fback', function (req, res) {
+	omxplayer.bigBack(function () {
+		res.redirect('/');
+	});
+});
+
 app.get('/back', function (req, res) {
 	omxplayer.back(function () {
 		res.redirect('/');

@@ -16,6 +16,19 @@ var config = require('./config');
 var unlink = require('fs').unlink;
 var resolve = require('path').resolve;
 
+/**
+ * Determine name of corresponding .srt (subtitles) file
+ * for a given mediaFile
+ */
+function srtFile(mediaFile) {
+	var extensionStart = mediaFile.lastIndexOf('.');
+	if (extensionStart>=0) {
+		return mediaFile.substring(0,extensionStart)+'.srt';
+	} else {
+		return mediaFile + '.srt';
+	}
+}
+
 app.get('/', index);
 app.use('/css', express['static'](__dirname+'/css'));
 
@@ -28,12 +41,18 @@ app.get('/play', function (req, res) {
 
 app.get('/delete', function (req, res) {
 	var fileName = req.query.file;
+	var mediaFile = resolve(config.mediaDir, fileName);
 	unlink(
-		resolve(config.mediaDir, fileName), 
+		resolve(mediaFile), 
 		function () {
 			res.redirect('/');
 		}
 	);
+	try {
+		unlink(srtFile(mediaFile));
+	} catch (e) {
+		//ignore
+	}
 });
 
 app.get('/pause', function (req, res) {

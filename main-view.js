@@ -58,14 +58,17 @@ function displayCurrentFile(node) {
 				'#text' : currentFile
 			}
 		});
-		node.element({'#list':  [
-			button('pause', 'PAUSE'),
-			button('stop', 'STOP'),
-		    button('fback', '<<'),
-			button('back', '<'),
-		    button('forward', '>'),
-			button('fforward', '>>')
-		]});
+		node.element({div: {
+			'@class': 'buttons',
+			'#list':  [
+				button('pause', 'PAUSE'),
+				button('stop', 'STOP'),
+			    button('fback', '<<'),
+				button('back', '<'),
+			    button('forward', '>'),
+				button('fforward', '>>')
+			]
+		}});
 	}
 }
 
@@ -98,7 +101,7 @@ function index(req, res) {
 	
 	displayCurrentFile(body);
 	
-	var node = body.element('ul');
+	var node = body;
 	
 	readdir(mediaDir, function (err, files) {
 		if (err) {

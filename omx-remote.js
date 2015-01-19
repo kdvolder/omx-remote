@@ -31,6 +31,7 @@ function srtFile(mediaFile) {
 
 app.get('/', index);
 app.use('/css', express['static'](__dirname+'/css'));
+app.use('/img', express['static'](__dirname+'/img'));
 
 app.get('/play', function (req, res) {
 	var fileName = req.query.file;

@@ -1,12 +1,59 @@
 body {
-    background-color: 00CED1;
-    font-size: 24pt;
+    background-color: Lavender;
+    font-size: 16pt;
 	font-family:arial;
 }
 
-.button {
+h1 {
+	color: white;
+	background-color: rgb(0,0,70);
 	margin: 10px;
-	border:5px solid #241d13;
+	padding-left: 25px;
+	padding-top:15px;
+	padding-bottom: 15px;
+}
+
+.button {
+	margin-left: 10px;
+}
+
+.deletelink {
+	display: inline-block;
+	font-size: 0;
+	color: transparent;
+	background-image: url("/img/delete-icon.png");
+	background-repeat: no-repeat;
+	background-position: 4px 4px;
+	width: 56px;
+	height: 56px;
+}
+.list div:nth-child(odd) {
+	background-color: white;
+}
+.list {
+	margin:10px;
+	background-color: rgb(255,255,200);
+}
+.list .item {
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+	flex-direction: row;
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+.playlink {
+	display: inline-block;
+	text-decoration:none;
+	color: rgb(0,0,128);
+	padding-left: 24px;
+	padding-right: 24px;
+	margin-top: auto;
+	margin-bottom: auto;
 }
 
 .stop {
@@ -33,14 +80,8 @@ body {
 
 .playing {
 	margin: 10px;
-	border:5px solid #241d13;
 	padding:25px 25px;
 	background-color: white;
-}
-
-.playlink {
-	margin: 10px;
-	padding: 15px;
 }
 
 .pause {

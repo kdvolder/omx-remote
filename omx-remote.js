@@ -29,6 +29,8 @@ function srtFile(mediaFile) {
 	}
 }
 
+app.use(require('cookie-parser')());
+
 app.get('/', index);
 app.use('/css', express['static'](__dirname+'/css'));
 app.use('/img', express['static'](__dirname+'/img'));

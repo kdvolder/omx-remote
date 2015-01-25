@@ -3,7 +3,6 @@ body {
     font-size: 16pt;
 	font-family:arial;
 }
-
 h1 {
 	color: white;
 	background-color: rgb(0,0,70);
@@ -12,11 +11,18 @@ h1 {
 	padding-top:15px;
 	padding-bottom: 15px;
 }
-
+form {
+	margin: 0;
+}
+#search {
+	font-size: 16pt;
+	position: fixed;
+	right: 35px;
+	top: 35px;
+}
 .button {
 	margin-left: 10px;
 }
-
 .deletelink {
 	display: inline-block;
 	font-size: 0;
@@ -58,7 +64,6 @@ h1 {
 	margin-top: auto;
 	margin-bottom: auto;
 }
-
 .stop {
 	-moz-box-shadow:inset 0px 60px 0px -15px #b54b3a;
 	-webkit-box-shadow:inset 0px 60px 0px -15px #b54b3a;
@@ -80,13 +85,11 @@ h1 {
 	position:relative;
 	top:1px;
 }
-
 .playing {
 	margin: 10px;
 	padding:25px 25px;
 	background-color: white;
 }
-
 .pause {
 	-moz-box-shadow:inset 0px 60px 0px -15px #d5db28;
 	-webkit-box-shadow:inset 0px 60px 0px -15px #d5db28;
@@ -112,7 +115,6 @@ h1 {
 	display: block;
 	padding: 10px;
 }
-
 .forward, .back, .fforward, .fback {
 	-moz-box-shadow:inset 0px 60px 0px -15px #3dc21b;
 	-webkit-box-shadow:inset 0px 60px 0px -15px #3dc21b;
@@ -134,7 +136,6 @@ h1 {
 	position:relative;
 	top:1px;
 }
-
 .shutdown {
 	-moz-box-shadow:inset 0px 60px 0px -15px #b54b3a;
 	-webkit-box-shadow:inset 0px 60px 0px -15px #b54b3a;

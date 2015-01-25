@@ -37,6 +37,7 @@ var hideExps = [
     "\\.mp4", "\\.mkv", "1080p", "720p", "REPACK",
     "BluRay", "YIFY", "anoXmous", "x264", "X264",
     "BRRip", "DD5\\.1", "-PSYPHER", "-DIMENSION",
+    "-dimension",
     "-LOL", "\\[VTV\\]", "-killers", "-2hd",
     "hdtv", "HDTV",
     "\\.", "\\+" ," "
@@ -61,7 +62,6 @@ function beatify(fileName) {
 }
 
 function actionLink(fileName, action, text) {
-	text = text || beatify(fileName);
 	return { a: {
 		'@href': URI(action).addSearch({file: fileName}).toString(),
 		'@class': action+'link',
@@ -69,8 +69,8 @@ function actionLink(fileName, action, text) {
 	}};
 }
 
-function playLink(fileName) {
-	return actionLink(fileName, 'play');
+function playLink(fileName, text) {
+	return actionLink(fileName, 'play', text);
 }
 
 function deleteLink(fileName) {
@@ -82,7 +82,7 @@ function displayCurrentFile(node) {
 	if (currentFile) {
 		node.element({div: {
 				'@class': 'playing',
-				'#text' : currentFile
+				'#text' : beatify(currentFile)
 			}
 		});
 		node.element({div: {
@@ -99,7 +99,34 @@ function displayCurrentFile(node) {
 	}
 }
 
+function createSearchBox(parent, searchParam) {
+	parent.element({form: {
+		'@class' : 'search',
+		input: { 
+			'@type':"search",  
+			'@name': 'search',
+			'@id' : 'search',
+			'@size': 30,
+			'@value': searchParam || ''
+		}
+	}});
+}
+
+function searchMatch(text, searchStr) {
+	return !searchStr || text.toLowerCase().indexOf(searchStr.toLowerCase())>=0;
+}
+
 function index(req, res) {
+	console.log('main-view-request');
+	var searchParam = req.query.search;
+	console.log('searchParam=', searchParam);
+	if (typeof(searchParam)==='string') {
+		res.cookie('search', searchParam);
+	} else {
+		searchParam = req.cookies && req.cookies.search;
+		console.log('searchParam(from cookie)=', searchParam);
+	}
+	
 	//console.log('request received');
 	//console.log('media dir = '+mediaDir);
 	
@@ -125,6 +152,8 @@ function index(req, res) {
 			h1: { '#text' : title}
 		}
 	});
+
+	createSearchBox(body, searchParam);
 	
 	displayCurrentFile(body);
 	
@@ -143,13 +172,16 @@ function index(req, res) {
 //			console.log('mediaFiles = '+mediaFiles);
 			mediaFiles.forEach(function(file) {
 //				console.log('file = '+file);
-				list.element({div: {
-					'@class': 'item',
-					'#list': [ 
-						playLink(file),
-						deleteLink(file)
-					]
-				}});
+				var label = beatify(file);
+				if (searchMatch(label, searchParam)) {
+					list.element({div: {
+						'@class': 'item',
+						'#list': [ 
+							playLink(file, label),
+							deleteLink(file)
+						]
+					}});
+				}
 			});
 		}
 //		console.log(root.toString());

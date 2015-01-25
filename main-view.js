@@ -33,8 +33,35 @@ function button(name, displayName) {
 	}};
 }
 
+var hideExps = [
+    "\\.mp4", "\\.mkv", "1080p", "720p", "REPACK",
+    "BluRay", "YIFY", "anoXmous", "x264", "X264",
+    "BRRip", "DD5\\.1", "-PSYPHER", "-DIMENSION",
+    "-LOL", "\\[VTV\\]", "-killers", "-2hd",
+    "hdtv", "HDTV",
+    "\\.", "\\+" ," "
+];
+
+var toReplace = ((function () {
+    var pat = "";
+    for (var i = 0; i < hideExps.length; i++) {
+		var piece = hideExps[i];
+		if (i>0) {
+			pat += "|";
+		}
+		pat += piece;
+    }
+    pat = "(" + pat + ")+"; 
+    console.log("hideExp="+pat);
+    return new RegExp("("+pat+")+" ,"g");
+})());
+
+function beatify(fileName) {
+	return fileName.replace(toReplace, ' ');
+}
+
 function actionLink(fileName, action, text) {
-	text = text || fileName;
+	text = text || beatify(fileName);
 	return { a: {
 		'@href': URI(action).addSearch({file: fileName}).toString(),
 		'@class': action+'link',
@@ -125,7 +152,7 @@ function index(req, res) {
 				}});
 			});
 		}
-		console.log(root.toString());
+//		console.log(root.toString());
 		res.send(root.toString());
 	});
 	

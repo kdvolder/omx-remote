@@ -7,8 +7,6 @@
 var child_process = require('child_process');
 var config = require('./config');
 
-var mediaDir = config.mediaDir;
-
 var killSignal = config.killSignal || 'SIGTERM';
 var playerCommand = config.playerCommand || 'omxplayer';
 var playerOptions = config.playerOptions || [];
@@ -18,7 +16,7 @@ var playing = null;
 
 var exitListeners = [];
 
-function start(file, callback) {
+function start(file, mediaDir, callback) {
 	stop(function () {
 		console.log(playerCommand + " " +playerOptions +file);
 		process = child_process.spawn(playerCommand, playerOptions.concat([file]), {
@@ -72,7 +70,7 @@ function stop(callback) {
 //			console.log("stderr: "+stdout);
 		});
 		exitListeners.push(callback);
-		console.log('exitListeners = '+exitListeners);
+//		console.log('exitListeners = '+exitListeners);
 	} else {
 //		console.log('Request ignored');
 		callback();
@@ -99,5 +97,8 @@ exports.forward = sendCodes(new Buffer([0x5b, 0x43]));
 exports.back = sendCodes(new Buffer([0x5b, 0x44]));
 exports.bigBack = sendCodes(new Buffer([0x5b, 0x42]));
 exports.bigForward = sendCodes(new Buffer([0x5b, 0x41]));
+exports.sendCodes = function (codes, callback) {
+	return sendCodes(codes)(callback);
+};
 
 exports.isPlaying = isPlaying;

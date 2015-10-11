@@ -36,15 +36,17 @@ app.use('/css', express['static'](__dirname+'/css'));
 app.use('/img', express['static'](__dirname+'/img'));
 
 app.get('/play', function (req, res) {
+	var cookieDir = req.cookies && req.cookies.mediaDir;
 	var fileName = req.query.file;
-	omxplayer.start(fileName, function() {
+	omxplayer.start(fileName, cookieDir||config.mediaDir, function() {
 		res.redirect('/');
 	});
 });
 
 app.get('/delete', function (req, res) {
+	var cookieDir = req.cookies && req.cookies.mediaDir;
 	var fileName = req.query.file;
-	var mediaFile = resolve(config.mediaDir, fileName);
+	var mediaFile = resolve(cookieDir||config.mediaDir, fileName);
 	unlink(
 		resolve(mediaFile), 
 		function () {
@@ -90,6 +92,12 @@ app.get('/fback', function (req, res) {
 
 app.get('/back', function (req, res) {
 	omxplayer.back(function () {
+		res.redirect('/');
+	});
+});
+
+app.get('/next_audio', function (req, res) {
+	omxplayer.sendCodes('k', function () {
 		res.redirect('/');
 	});
 });

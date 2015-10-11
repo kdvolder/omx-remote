@@ -120,7 +120,7 @@ form {
 	display: block;
 	padding: 10px;
 }
-.forward, .back, .fforward, .fback {
+.forward, .back, .fforward, .fback, .next_audio {
 	-moz-box-shadow:inset 0px 60px 0px -15px #3dc21b;
 	-webkit-box-shadow:inset 0px 60px 0px -15px #3dc21b;
 	box-shadow:inset 0px 60px 0px -15px #3dc21b;
@@ -134,11 +134,12 @@ form {
 	text-decoration:none;
 	text-shadow:0px -1px 0px #2f6627;
 }
-.forward:hover, .back:hover, .fforward:hover, .fback:hover {
+.forward:hover, .back:hover, .fforward:hover, .fback:hover, .next_audio:hover {
 	background-color:#5cbf2a;
 }
-.forward:active, .back:active, .fforward:active, .fback:active {
+.forward:active, .back:active, .fforward:active, .fback:active, .next_audio:active {
 	position:relative;
+
 	top:1px;
 }
 .shutdown {

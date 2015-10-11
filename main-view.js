@@ -5,7 +5,7 @@ var config = require('./config');
 var readdir = require('fs').readdir;
 var URI = require('URIjs');
 
-var mediaExtensions = ['.mp4', '.avi', '.mkv'];
+var mediaExtensions = ['.mp4', '.avi', '.mkv', '.MOV'];
 var mediaDir = config.mediaDir;
 
 var omxplayer = require('./omxplayer');
@@ -34,9 +34,10 @@ function button(name, displayName) {
 }
 
 var hideExps = [
-    "\\.mp4", "\\.mkv", "1080p", "720p", "REPACK",
+    "\\.mp4", "\\.mkv", 
+    //"1080p", "720p", "REPACK",
     "BluRay", "YIFY", "anoXmous", "x264", "X264",
-    "BRRip", "DD5\\.1", "-PSYPHER", "-DIMENSION",
+    "BRRip", "DD5\\.1", "-PSYPHER", "-DIMENSION", "-KILLERS",
     "-dimension",
     "-LOL", "\\[VTV\\]", "-killers", "-2hd",
     "hdtv", "HDTV",
@@ -93,8 +94,10 @@ function displayCurrentFile(node) {
 			    button('fback', '<<'),
 				button('back', '<'),
 			    button('forward', '>'),
-				button('fforward', '>>')
+				button('fforward', '>>'),
+				button('next_audio', '>a')
 			]
+
 		}});
 	}
 }
@@ -117,11 +120,20 @@ function searchMatch(text, searchStr) {
 }
 
 function index(req, res) {
+	req.cookies = req.cookies || {};
 	console.log('main-view-request');
 	var searchParam = req.query.search;
 	console.log('searchParam=', searchParam);
 	if (typeof(searchParam)==='string') {
-		res.cookie('search', searchParam);
+		if (searchParam==='p0rky') {
+			res.cookie('mediaDir', '/media/terra/.p/to-watch', {maxAge: 3600*1000});
+			res.cookie('search', '');
+			return res.redirect('/');
+		} else if (searchParam==='d0ne') {
+			res.clearCookie('mediaDir');
+		} else {
+			res.cookie('search', searchParam);
+		}
 	} else {
 		searchParam = req.cookies && req.cookies.search;
 		console.log('searchParam(from cookie)=', searchParam);
@@ -159,7 +171,7 @@ function index(req, res) {
 	
 	var node = body;
 	
-	readdir(mediaDir, function (err, files) {
+	readdir(req.cookies.mediaDir || mediaDir, function (err, files) {
 		if (err) {
 //			console.log(err);
 			node.element({li: {'#text' : err.toString()}});
